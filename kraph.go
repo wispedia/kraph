@@ -39,7 +39,6 @@ func NewNode(id ID) Node {
 	}
 }
 
-
 // Graph definition
 type Graph interface {
 	// 重置 graph ，会删除其中所有的边和节点
@@ -80,7 +79,7 @@ type Graph interface {
 	GetTargets(id ID) (map[ID]Node, error)
 
 	// 将整个图输出为 json 格式
-	String() string
+	JSON() ([]byte, error)
 }
 
 func NewGraph() Graph {
@@ -330,7 +329,7 @@ func (g *graph) GetTargets(pid ID) (map[ID]Node, error) {
 	return t, nil
 }
 
-func (g *graph) String() string {
+func (g *graph) JSON() ([]byte, error) {
 	g.mu.RLock()
 	defer g.mu.RUnlock()
 
@@ -351,10 +350,6 @@ func (g *graph) String() string {
 			}
 		}
 	}
-	fmt.Println(rs)
-	j, err := ffjson.Marshal(rs)
-	if err != nil {
-		fmt.Println(err)
-	}
-	return string(j)
+	return ffjson.Marshal(rs)
+
 }

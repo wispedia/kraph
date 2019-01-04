@@ -40,6 +40,8 @@ func TestNewGraph(t *testing.T) {
 
 	nd := g.GetNode(id)
 
-	fmt.Println(nd, smap, tmap, num, nodes, wgt, g.String())
+	j, _ := g.JSON()
+
+	fmt.Println(nd, smap, tmap, num, nodes, wgt, string(j))
 	g.Init()
 }
