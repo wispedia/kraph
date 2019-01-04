@@ -16,7 +16,7 @@ func (id nid) String() string {
 	return string(id)
 }
 
-func NewNID(id string) ID {
+func NewNid(id string) ID {
 	return nid(id)
 }
 

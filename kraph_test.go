@@ -9,13 +9,13 @@ func TestNewGraph(t *testing.T) {
 
 	g := NewGraph()
 
-	id := NewNID("node1")
+	id := NewNid("node1")
 	n := NewNode(id)
 
-	pid := NewNID("node2")
+	pid := NewNid("node2")
 	pn := NewNode(pid)
 
-	pid2 := NewNID("node3")
+	pid2 := NewNid("node3")
 	pn2 := NewNode(pid2)
 
 	g.AddNode(n)
